@@ -42,7 +42,7 @@ public class EmployeeService {
 		
 		// check sorting order attribute
 		String sortAttribute = sort.substring(1, sort.length());
-		if (!(sortAttribute.equals("id") || sortAttribute.equals("name") || sortAttribute.equals("login") || sortAttribute.equals("name"))) {
+		if (!(sortAttribute.equals("id") || sortAttribute.equals("name") || sortAttribute.equals("login") || sortAttribute.equals("salary"))) {
 			throw new RuntimeException();
 		}
 		
