@@ -1,5 +1,7 @@
 package sg.com.toppan.EmpSalaryMgmtApp.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +34,14 @@ public class EmployeeController {
 	@GetMapping("/users")
 	public ResponseEntity<List<Employee>> getAllEmployees(@RequestParam("minSalary") double minSalary, @RequestParam("maxSalary") double maxSalary,
 														@RequestParam("offset") int offset, @RequestParam("limit") int limit,
-														@RequestParam("sort") String sort) {
-		List<Employee> employees = employeeService.searchEmployee(minSalary, maxSalary, offset, limit, sort);
+														@RequestParam("sort") final String sort) {
+		String encodedSort = "";
+		try {
+			encodedSort = URLEncoder.encode(sort, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		List<Employee> employees = employeeService.searchEmployee(minSalary, maxSalary, offset, limit, encodedSort);
 		return new ResponseEntity<> (employees, HttpStatus.OK);
 	}
 	

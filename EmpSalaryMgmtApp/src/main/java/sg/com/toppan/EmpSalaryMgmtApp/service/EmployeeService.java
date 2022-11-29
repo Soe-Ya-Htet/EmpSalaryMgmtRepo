@@ -43,11 +43,12 @@ public class EmployeeService {
 		
 		char orderSign = sort.charAt(0);
 		
+		
 		if (!(orderSign == '+' || orderSign == '-')) {
 			// return 404 for wrong order sign
 		}
 		
-		String order = orderSign == '+' ? "ASC" : "DESC";
+		String order = orderSign == '-' ? "DESC" : "ASC";
 		
 		List<Employee> searchResult = employeeRepo.customSearch(minSalary, maxSalary, offset, limit, sortAttribute, order);
 		
