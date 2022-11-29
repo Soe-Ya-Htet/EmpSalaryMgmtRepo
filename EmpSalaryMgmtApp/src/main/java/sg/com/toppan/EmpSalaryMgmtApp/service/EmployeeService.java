@@ -34,18 +34,16 @@ public class EmployeeService {
 
 	public List<Employee> searchEmployee(double minSalary, double maxSalary, int offset, int limit, String sort) {
 		
-		
-		String sortAttribute = sort.substring(1, sort.length());
-		
-		if (!(sortAttribute.equals("id") || sortAttribute.equals("name") || sortAttribute.equals("login") || sortAttribute.equals("name"))) {
-			// return 404 for wrong sorting column
+		// check sorting order sign
+		char orderSign = sort.charAt(0);
+		if (!(orderSign == '+' || orderSign == '-')) {
+			throw new RuntimeException();
 		}
 		
-		char orderSign = sort.charAt(0);
-		
-		
-		if (!(orderSign == '+' || orderSign == '-')) {
-			// return 404 for wrong order sign
+		// check sorting order attribute
+		String sortAttribute = sort.substring(1, sort.length());
+		if (!(sortAttribute.equals("id") || sortAttribute.equals("name") || sortAttribute.equals("login") || sortAttribute.equals("name"))) {
+			throw new RuntimeException();
 		}
 		
 		String order = orderSign == '-' ? "DESC" : "ASC";
