@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { EmployeeSearchComponent } from './employee-search/employee-search.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path:"",redirectTo:"search", pathMatch:"full"},
+  {path:"search",component:EmployeeSearchComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

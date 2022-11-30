@@ -1,0 +1,17 @@
+.container {
+    margin-bottom: 50px;
+}
+
+.error {
+    margin-top: 30;
+    color: red;
+}
+
+div.searchWord {
+    text-align: right;
+    margin-right: 5px;
+}
+
+div.inDiv {
+    margin-bottom: 10px;
+}
