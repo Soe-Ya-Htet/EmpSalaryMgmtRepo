@@ -95,7 +95,7 @@ public class FileUploadUtil {
 			}
 
 		} catch (IOException e) {
-			throw new RuntimeException("fail to parse CSV file: " + e.getMessage());
+			throw new CustomException("Fail to parse CSV file: " + e.getMessage());
 		} catch (NumberFormatException e) {
 			throw new CustomException("The file has wrong format salary.");
 		}

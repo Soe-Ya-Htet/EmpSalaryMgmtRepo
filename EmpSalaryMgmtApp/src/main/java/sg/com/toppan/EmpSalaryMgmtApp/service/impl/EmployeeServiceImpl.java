@@ -1,4 +1,4 @@
-package sg.com.toppan.EmpSalaryMgmtApp.service;
+package sg.com.toppan.EmpSalaryMgmtApp.service.impl;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,18 +10,21 @@ import org.springframework.web.multipart.MultipartFile;
 import sg.com.toppan.EmpSalaryMgmtApp.CustomException.CustomException;
 import sg.com.toppan.EmpSalaryMgmtApp.model.Employee;
 import sg.com.toppan.EmpSalaryMgmtApp.repo.EmployeeRepo;
+import sg.com.toppan.EmpSalaryMgmtApp.service.IEmployeeService;
 import sg.com.toppan.EmpSalaryMgmtApp.util.FileUploadUtil;
 
 @Service
-public class EmployeeService {
+public class EmployeeServiceImpl implements IEmployeeService {
 
 	@Autowired
 	private EmployeeRepo employeeRepo;
 
+	@Override
 	public List<Employee> findAllEmployees() {
 		return employeeRepo.findAll();
 	}
 
+	@Override
 	public void saveCSV(MultipartFile file) throws CustomException {
 		try {
 			List<Employee> uploadEmployees = FileUploadUtil.convertToEmpList(file.getInputStream());
@@ -38,10 +41,11 @@ public class EmployeeService {
 			
 			employeeRepo.saveAll(uploadEmployees);
 		} catch (IOException e) {
-			throw new RuntimeException("fail to store csv data: " + e.getMessage());
+			throw new CustomException("Fail to store csv data : " + e.getMessage());
 		}
 	}
 
+	@Override
 	public List<Employee> searchEmployee(double minSalary, double maxSalary, int offset, int limit, String sort) {
 
 		// check sorting order sign
