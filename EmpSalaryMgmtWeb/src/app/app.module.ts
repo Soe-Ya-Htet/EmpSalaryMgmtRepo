@@ -7,11 +7,13 @@ import { EmployeeSearchComponent } from './employee-search/employee-search.compo
 import { EmployeeService } from './employee.service';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
+import { CsvUploadComponent } from './csv-upload/csv-upload.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeSearchComponent
+    EmployeeSearchComponent,
+    CsvUploadComponent
   ],
   imports: [
     BrowserModule,
