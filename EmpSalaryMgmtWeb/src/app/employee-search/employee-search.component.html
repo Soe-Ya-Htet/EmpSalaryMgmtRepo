@@ -1,56 +1,49 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- for search -->
-<div class="container">
+<div class="container-fluid">
     
-    <div class="container"></div>
     <div class="container error">
         <div class="list-group" *ngIf="isError">
             <ul>
-                <li>Please fill in all Search Criteria to search.</li>
-                <li>Please check whether Maximum Salary and Minimum Salary fields are Number or Decimal values.</li>
-                <li>Please check whether Offset and Limit fields are Number values.</li>
+                <li>Please filled in all Search Criteria to search.</li>
+                <li>Please make sure Maximum Salary and Minimum Salary fields are Number or Decimal values.</li>
+                <li>Please make sure whether Offset and Limit fields are Number values.</li>
             </ul>
         </div>
     </div>
-
+  
     <div class="container">
         <div class="row inDiv">
-        <div class="col-2 searchWord">
+          <div class="col-2 searchWord">
             Minimum Salary :
-        </div>
-        <div class="col-2">
+          </div>
+          <div class="col-2">
             <input type="text" class="form-control" name="minSalary" [(ngModel)]="minSalary">
-        </div>
-        <div class="col-2 searchWord">
+          </div>
+          <div class="col-2 searchWord">
             Maximum Salary :
-        </div>
-        <div class="col-2">
+          </div>
+          <div class="col-2">
             <input type="text" class="form-control" name="maxSalary" [(ngModel)]="maxSalary">
+          </div>
         </div>
-        </div>
-
+  
         <div class="row inDiv">
             <div class="col-2 searchWord">
-            Offset :
+              Offset :
             </div>
             <div class="col-2">
-            <input type="text" class="form-control" name="offset" [(ngModel)]="offset">
+              <input type="text" class="form-control" name="offset" [(ngModel)]="offset">
             </div>
             <div class="col-2 searchWord">
-            Limit :
+              Limit :
             </div>
             <div class="col-2">
                 <input type="text" class="form-control" name="limit" [(ngModel)]="limit">
             </div>
-        </div>
-
-        <div class="row inDiv">
+          </div>
+  
+          <div class="row inDiv">
             <div class="col-2 searchWord">
-            Sort By :
+              Sort By :
             </div>
             <div class="col-2">
                 <select class="form-control" name="sort" [(ngModel)]="sort">
@@ -61,7 +54,7 @@
                 </select>
             </div>
             <div class="col-2 searchWord">
-            Order :
+              Order :
             </div>
             <div class="col-2">
                 <select class="form-control" name="order" [(ngModel)]="order">
@@ -69,8 +62,8 @@
                     <option value="-">Descending</option>
                 </select>
             </div>
-        </div>
-        <div class="row inDiv">
+          </div>
+          <div class="row inDiv">
             <div class="col-2">
             </div>
             <div class="col-2">
@@ -82,9 +75,9 @@
             <div class="col-2">
                 <button type="button" class="btn btn-primary btn-sm" (click)="searchEmpByCriteria()">Search</button>
             </div>
-        </div>
-    </div>
-    <div class="container"></div>
+          </div>
+      </div>
+    <div class="container-fluid"></div>
     <div class="container">
         <table class="table">
             <thead>
@@ -105,5 +98,5 @@
             </tbody>
         </table>
     </div>
-</div>
+  </div>
 
