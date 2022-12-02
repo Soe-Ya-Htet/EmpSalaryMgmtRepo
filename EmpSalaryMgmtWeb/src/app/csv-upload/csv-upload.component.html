@@ -1,4 +1,17 @@
 <div class="container">
+
+       <div class="row">
+              <p class="upload-info" *ngIf="isInfo">
+                     {{message}}
+              </p>
+              <p class="upload-ok" *ngIf="isOk">
+                     {{message}}
+              </p>
+              <p class="upload-fail" *ngIf="isError">
+                     {{message}}
+              </p>
+       </div>
+       
        <input type="file" class="file-input"
-       (change)="onFileSelected($event)" accept=".csv">
+       (change)="onFileSelected($event)" accept=".csv" #fileInput>
 </div>

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { EmployeeService } from '../employee.service';
+import { StatusCode } from 'status-code-enum';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-csv-upload',
@@ -10,7 +12,18 @@ export class CsvUploadComponent implements OnInit {
 
   constructor(private service: EmployeeService) { }
 
+  message: string;
+  isError: boolean;
+  isOk: boolean;
+  isInfo: boolean;
+  @ViewChild("fileInput", {static: false})
+  InputVar: ElementRef;
+
   ngOnInit() {
+    this.message = 'Please upload csv file.'
+    this.isError = false;
+    this.isOk = false;
+    this.isInfo = true;
   }
 
   onFileSelected(event) {
@@ -26,9 +39,19 @@ export class CsvUploadComponent implements OnInit {
         let resp = this.service.upload(formData);
 
         resp.subscribe( data => {
-          console.log(data.status);
-          console.log(JSON.parse(data.body).message);
-        });
+          this.isOk = true;
+          this.isError = false;
+          this.isInfo = false;
+          this.message = JSON.parse(data.body).message;
+          this.InputVar.nativeElement.value = "";
+        },(exception: HttpErrorResponse) => {
+          this.isOk = false;
+          this.isError = true;
+          this.isInfo = false;
+          this.message = JSON.parse(exception.error).message;
+          this.InputVar.nativeElement.value = "";
+        }
+        );
     }
   }
 }

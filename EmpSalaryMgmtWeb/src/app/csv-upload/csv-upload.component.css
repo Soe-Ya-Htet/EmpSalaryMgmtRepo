@@ -1,3 +1,18 @@
 .container {
     padding: 20px;
 }
+
+.upload-info{
+    color: #2C6EFD;
+    font-size: larger;
+}
+
+.upload-ok{
+    color: green;
+    font-size: larger;
+}
+
+.upload-fail{
+    color: red;
+    font-size: larger;
+}
