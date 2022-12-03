@@ -1,0 +1,51 @@
+version: '3.6'
+services:
+  mysqldb:
+    image: mysql
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=inventor1234
+      - MYSQL_DATABASE=employeemanager
+    ports:
+      - 3307:3306
+    volumes:
+      - db:/var/lib/mysql
+      - "./schema.sql:/docker-entrypoint-initdb.d/1.sql"
+  app:
+    depends_on:
+      - mysqldb
+    build: ./EmpSalaryMgmtApp
+    restart: on-failure
+    ports:
+      - 8081:8081
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url":"jdbc:mysql://mysqldb:3306/employeemanager",
+        "spring.datasource.username":"root",
+        "spring.datasource.password":"inventor1234",
+        "spring.jpa.show-sql":"true",
+        "spring.jpa.hibernate.ddl-auto":"update",
+        "spring.jpa.properties.hibernate.dialect":"org.hibernate.dialect.MySQL5Dialect",
+        "spring.jpa.open-in-view":"false",
+        "server.port":"8081",
+        "server.servlet.encoding.charset":"UTF-8",
+        "server.servlet.encoding.enabled":"true",
+        "server.servlet.encoding.force":"true",
+        "spring.servlet.multipart.max-file-size":"2MB",
+        "spring.servlet.multipart.max-request-size":"2MB"
+      }'
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
+  web:
+    build: ./EmpSalaryMgmtWeb/
+    links:
+           - "app"
+    depends_on:
+           - "app"
+    ports:
+           - "4200:4200"  
+
+volumes:
+  db:
