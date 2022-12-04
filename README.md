@@ -20,6 +20,7 @@ The repository for Employee Salary Management assignment by Toppan Ecquaria.
     </li>
     <li><a href="#testing-web">Testing Web</a></li>
     <li><a href="#testing-api">Testing Api</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
 
@@ -69,9 +70,31 @@ To test the application via web, please use localhost:4200 in the address bar of
 
 ## Testing Api
 
-To testing application api via third party tools like postman, please use localhost:8081 as the base url.
+To testing application api via third party tools like postman, please use http://localhost:8081/employee as the base url.
 This application exposes two Api:
+
+1. http://localhost:8081/employee/users (Http GET API)
+  * usage example
+  ```sh
+  http://localhost:8081/employee/users?minSalary=0&maxSalary=10000&sort=+salary&offset=0&limit=9
+  ```
+   
+2. http://localhost:8081/employee/upload (Http POST API)
+  * make sure the csv file is uploaded using "form-data"
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+
+<!-- CONTACT -->
+## Contact
+
+If you have any issue setting up or running the application, please kindly help to contact me.
+
+* Name : Soe Ya Htet
+* Phone : +6593969840 (whatsapp as well)
+* email : soeyahtet@u.nus.edu
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<h1>Thanks for evaluating this assignment.</h1>
