@@ -33,7 +33,7 @@ This is an assignment project which take part of one of the interview process.
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+The application is built using:
 
 1. Spring Boot
 2. Angular
@@ -54,8 +54,8 @@ Please follow the steps below to be able to run the project.
 
 1. Download this repository as Zip file
 2. Extract the downloaded zip file in desired location
-3. Open command prompt (Window+R) in window or open Terminal in Mac
-4. In commsnd prompt or Terminal, change directory to the extracted location (the final path will look like /EmpSalaryMgmtRepo-main)
+3. Open command prompt(Window+R) in window or open Terminal in Mac
+4. In command prompt or Terminal, change directory to the extracted location (the final path will look like /EmpSalaryMgmtRepo-main)
 5. Run the following command
   ```sh
   docker-compose up
@@ -65,18 +65,19 @@ Please follow the steps below to be able to run the project.
 
 ## Testing Web
 
-To test the application via web, please use localhost:4200 in the address bar of the chrome browser.
+To test the application via web, please use localhost:4200 in the address bar of chrome browser.
+To make testing easier, please use test.csv file under the downloaded directory to upload to the application first.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Testing Api
 
-To testing application api via third party tools like postman, please use http://localhost:8081/employee as the base url.
+To test application api via third party tools like postman, please use http://localhost:8081/employee as the base url.
 This application exposes two Api:
 
 1. http://localhost:8081/employee/users (Http GET API)
   * usage example
   ```sh
-  http://localhost:8081/employee/users?minSalary=0&maxSalary=10000&sort=+salary&offset=0&limit=9
+  http://localhost:8081/employee/users?minSalary=0&maxSalary=4000&offset=0&limit=30&sort=+name
   ```
    
 2. http://localhost:8081/employee/upload (Http POST API)
