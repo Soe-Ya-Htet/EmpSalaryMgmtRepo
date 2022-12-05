@@ -81,7 +81,7 @@ This application exposes two Api:
   ```
    
 2. http://localhost:8081/employee/upload (Http POST API)
-  * make sure the csv file is uploaded using "form-data"
+  * make sure the csv file is uploaded using "form-data" and the key of the csv file must be "file"
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
